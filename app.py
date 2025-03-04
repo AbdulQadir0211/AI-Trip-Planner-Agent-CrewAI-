@@ -1,5 +1,6 @@
 from src_modules.Travel_Agents import guide_expert, location_expert, planner_expert
 from src_modules.Travel_Task import location_task, guide_task, planner_task
+from src_modules.Travel_Tools import search_web_tool
 from crewai import Crew, Process
 import streamlit as st
 
