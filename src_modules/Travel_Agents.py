@@ -1,6 +1,6 @@
 from crewai import Agent
-from Travel_Tools import search_web_tool
-from Travel_Tools import search_web_tool
+from src_modules.Travel_Tools import search_web_tool
+from src_modules.Travel_Tools import search_web_tool
 from crewai import LLM
 from langchain_ollama.llms import OllamaLLM
 
