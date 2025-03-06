@@ -2,15 +2,25 @@ from crewai import Agent
 from src_modules.Travel_Tools import search_web_tool
 from src_modules.Travel_Tools import search_web_tool
 from crewai import LLM
-from langchain_ollama.llms import OllamaLLM
+from langchain_groq import ChatGroq
+
+
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 
 # Initialize LLM
-llm = LLM(
-    model="ollama/llama3.2",
-    base_url="http://localhost:11434"
-)
 
+llm = LLM(
+    model="groq/llama-3.3-70b-versatile",
+    temperature=0.7
+)
 
 # Agents
 guide_expert = Agent(
@@ -20,7 +30,7 @@ guide_expert = Agent(
     tools=[search_web_tool],
     verbose=True,
     max_iter=5,
-    llm=LLM(model="ollama/llama3.2",base_url="http://localhost:11434"),
+    llm=llm,
     allow_delegation=False,
 )
 
@@ -31,7 +41,7 @@ location_expert = Agent(
     tools=[search_web_tool],  
     verbose=True,
     max_iter=5,
-    llm= LLM(model="ollama/llama3.2",base_url="http://localhost:11434"),   # ChatOpenAI(temperature=0, model="gpt-4o-mini"),
+    llm= llm,
     allow_delegation=False,
 )
 
@@ -42,6 +52,6 @@ planner_expert = Agent(
     tools=[search_web_tool],
     verbose=True,
     max_iter=5,
-    llm=LLM(model="ollama/llama3.2",base_url="http://localhost:11434"),
+    llm=llm,
     allow_delegation=False,
 )
