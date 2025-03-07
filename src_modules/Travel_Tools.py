@@ -1,16 +1,20 @@
-from crewai_tools import WebsiteSearchTool, ScrapeWebsiteTool
-from crewai.tools import tool
-from langchain_community.tools import DuckDuckGoSearchResults
+import os
+from dotenv import load_dotenv
+from langchain_community.tools.tavily_search import TavilySearchResults
 
-# Web search tool using DuckDuckGo
-@tool
+# Load environment variables
+load_dotenv()
+
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+
+
+# Web search function
 def search_web_tool(query: str):
     """
     Searches the web and returns results.
     """
-    search_tool = DuckDuckGoSearchResults(num_results=10, verbose=True)
-    return search_tool.run(query)
+    search_tool = TavilySearchResults(max_results=2)
+    return search_tool.invoke(query)
 
-# Web scraping tool
-#web_search_tool = WebsiteSearchTool()
-#scrape_website_tool = ScrapeWebsiteTool()
+# Test the function
+#print(search_web_tool("What is the current net worth of Tesla?"))
