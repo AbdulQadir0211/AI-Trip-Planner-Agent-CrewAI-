@@ -54,16 +54,8 @@ streamlit run app.py
 2. **Location Expert** ✈️ – Provides travel logistics (accommodation, visa, etc.).
 3. **Planner Expert** 🗺️ – Combines data into a structured itinerary.
 
-### **🔹 Example API Request**
-#### **POST `/chat`**
-```json
-{
-  "model_name": "llama-3.3-70b-versatile",
-  "system_prompt": "Plan a trip for me.",
-  "messages": ["I want to visit Paris in April."],
-  "allow_search": true
-}
-```
+
+
 
 ---
 
@@ -103,5 +95,5 @@ This project is licensed under the **MIT License**.
 
 ---
 
-💡 **Made with ❤️ by AI Travel Enthusiasts!**
+💡 **Made with ❤️ by AI Enthusiasts!**
 
